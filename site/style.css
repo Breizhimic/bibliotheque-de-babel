@@ -1,0 +1,157 @@
+/* Symboles sans police sur Google Fonts : polices hébergées ici (licences dans polices/).
+   Unifont (style pixel) sert de dernier recours, limité aux symboles que rien d'autre ne dessine. */
+@font-face {
+  font-family: "Kanchenjunga";
+  src: url("polices/Kanchenjunga-Regular.ttf") format("truetype");
+  unicode-range: U+16D40-16D7F, U+25CC;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Sans Gurung Khema";
+  src: url("polices/NotoSansGurungKhema-Regular.ttf") format("truetype");
+  unicode-range: U+16100-1613F;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Unifont Babel";
+  src: url("polices/unifont-babel-smp.woff2") format("woff2");
+  unicode-range: U+10D40-10D8F, U+11380-113FF, U+1E5D0-1E5FF, U+1E08F, U+10EC5-10EC7, U+10ED0, U+10EFA-10EFB,
+    U+1AFF0-1AFFE, U+1B132, U+1B150-1B152, U+1B155, U+1B164-1B167;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Unifont Babel";
+  src: url("polices/unifont-babel-bmp.woff2") format("woff2");
+  unicode-range: U+088F, U+31BC-31BF;
+  font-display: swap;
+}
+
+:root {
+  --fond: #f4efe4;
+  --papier: #fbf8f1;
+  --encre: #2a2119;
+  --discret: #75685a;
+  --trait: #d9cfbd;
+  --accent: #8a4f1d;
+  --accent-encre: #fffaf2;
+  --surligne: #f1d27a;
+  --erreur: #a4262c;
+  --polices: "Noto Sans", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans Armenian", "Noto Sans Georgian",
+    "Noto Sans Devanagari", "Noto Sans Bengali", "Noto Sans Gurmukhi", "Noto Sans Gujarati", "Noto Sans Oriya",
+    "Noto Sans Tamil", "Noto Sans Telugu", "Noto Sans Kannada", "Noto Sans Malayalam", "Noto Sans Sinhala",
+    "Noto Sans Thai", "Noto Sans Lao", "Noto Sans Khmer", "Noto Sans Myanmar", "Noto Serif Tibetan",
+    "Noto Sans Ethiopic", "Noto Sans Adlam", "Noto Sans Bamum", "Noto Sans Vai", "Noto Sans NKo",
+    "Noto Sans Tifinagh", "Noto Sans Osage", "Noto Sans Cherokee", "Noto Sans Canadian Aboriginal", "Noto Sans Yi",
+    "Noto Sans Mongolian", "Noto Sans Syriac", "Noto Sans Thaana", "Noto Sans Mandaic", "Noto Sans Balinese",
+    "Noto Sans Batak", "Noto Sans Buginese", "Noto Sans Buhid", "Noto Sans Hanunoo", "Noto Sans Tagalog",
+    "Noto Sans Tagbanwa", "Noto Sans Javanese", "Noto Sans Sundanese", "Noto Sans Rejang", "Noto Sans Cham",
+    "Noto Sans Tai Le", "Noto Sans Tai Tham", "Noto Sans Tai Viet", "Noto Sans New Tai Lue", "Noto Sans Kayah Li",
+    "Noto Sans Chakma", "Noto Sans Grantha", "Noto Sans Hanifi Rohingya", "Noto Sans Lepcha", "Noto Sans Limbu",
+    "Noto Sans Lisu", "Noto Sans Meetei Mayek", "Noto Sans Miao", "Noto Sans Newa", "Noto Sans Ol Chiki",
+    "Noto Sans Saurashtra", "Noto Sans Sora Sompeng", "Noto Sans Syloti Nagri", "Noto Sans Wancho",
+    "Noto Sans Warang Citi", "Noto Serif NP Hmong", "Noto Sans Sunuwar", "Kanchenjunga",
+    "Noto Sans Gurung Khema", "Unifont Babel",
+    "Microsoft YaHei", "PingFang SC", "Hiragino Sans", "Yu Gothic", "Malgun Gothic", "Apple SD Gothic Neo",
+    "Noto Sans CJK SC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fond: #16130f;
+    --papier: #1f1b16;
+    --encre: #ece3d4;
+    --discret: #a89a88;
+    --trait: #3a332a;
+    --accent: #d9955a;
+    --accent-encre: #1a1510;
+    --surligne: #6d5413;
+    --erreur: #ff8a80;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--encre);
+  font-family: var(--polices);
+  line-height: 1.5;
+}
+
+header, main { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+header { padding-top: 28px; }
+h1 { font-family: Georgia, "Noto Serif", serif; font-weight: normal; font-size: 2rem; margin: 0; letter-spacing: 0.02em; }
+.sous-titre { color: var(--discret); margin: 4px 0 20px; }
+
+button, .fichier {
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--encre);
+  background: var(--papier);
+  border: 1px solid var(--trait);
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+button:hover, .fichier:hover { border-color: var(--accent); }
+button:disabled { opacity: 0.4; cursor: default; }
+button.principal { background: var(--accent); color: var(--accent-encre); border-color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.outils { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; margin-bottom: 16px; }
+.outils details { flex: 1 1 320px; }
+summary { cursor: pointer; padding: 6px 0; color: var(--accent); }
+#recherche { display: grid; gap: 10px; padding: 10px 0; }
+#recherche textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--encre);
+  background: var(--papier);
+  border: 1px solid var(--trait);
+  border-radius: 6px;
+  padding: 8px;
+}
+.champs { display: flex; flex-wrap: wrap; gap: 8px 16px; border: 0; padding: 0; margin: 0; }
+.champs legend { padding: 0; margin-right: 8px; float: left; }
+input[type="number"] {
+  width: 5em;
+  font: inherit;
+  color: var(--encre);
+  background: var(--papier);
+  border: 1px solid var(--trait);
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.emplacement { font-family: Georgia, "Noto Serif", serif; font-size: 1.1rem; margin: 8px 0; }
+.emplacement .hexagone { font-family: ui-monospace, Consolas, monospace; letter-spacing: 0.05em; }
+.barre { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 8px 0; }
+.barre label { display: inline-flex; gap: 6px; align-items: center; }
+.bascule { display: inline-flex; gap: 10px; margin-right: 8px; }
+.fichier input { display: none; }
+.message { min-height: 1.5em; color: var(--discret); }
+.message a { color: var(--accent); }
+.message.attente::after { content: " ⧗"; }
+.erreur, .message.erreur { color: var(--erreur); }
+
+.page {
+  background: var(--papier);
+  border: 1px solid var(--trait);
+  border-radius: 4px;
+  padding: 16px 20px;
+  overflow-x: auto;
+  min-height: 60vh;
+}
+.page .ligne { white-space: pre; unicode-bidi: isolate; line-height: 1.7; }
+.page.texte { font-size: 16px; }
+.page.grille { font-size: 13px; }
+.page.grille .ligne { display: grid; grid-template-columns: repeat(80, 1.45em); unicode-bidi: normal; direction: ltr; }
+.page.grille .ligne span { text-align: center; overflow: hidden; unicode-bidi: isolate; }
+.page mark, .page .trouve { background: var(--surligne); color: inherit; border-radius: 2px; }
+
+.apropos { margin: 28px 0 40px; color: var(--discret); max-width: 70ch; }
+.apropos p { margin: 10px 0; }
+.empreinte code { word-break: break-all; font-size: 0.8rem; }

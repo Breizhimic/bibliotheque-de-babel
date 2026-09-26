@@ -1,0 +1,8 @@
+{
+  "name": "bibliotheque-de-babel",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}

@@ -1,0 +1,10 @@
+* text=auto eol=lf
+
+# Données dont chaque octet compte (empreintes SHA-256, découpage sur "\n") : aucune conversion.
+symboles*.txt -text
+symboles.csv -text
+langues_et_alphabets.txt -text
+alphabet_v2/* -text
+site/alphabet_v2.txt -text
+*.ttf binary
+*.woff2 binary

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bibliothèque de Babel</title>
+<meta name="description" content="Tous les livres de 410 pages écrits avec 22 984 symboles des langues vivantes, chacun une seule fois.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Polices Noto par groupes : un nom de famille inconnu ne fait échouer que son groupe. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+Arabic&family=Noto+Sans+Hebrew&family=Noto+Sans+Armenian&family=Noto+Sans+Georgian&family=Noto+Sans+Devanagari&family=Noto+Sans+Bengali&family=Noto+Sans+Gurmukhi&family=Noto+Sans+Gujarati&family=Noto+Sans+Oriya&family=Noto+Sans+Tamil&family=Noto+Sans+Telugu&family=Noto+Sans+Kannada&family=Noto+Sans+Malayalam&family=Noto+Sans+Sinhala&family=Noto+Sans+Thai&family=Noto+Sans+Lao&family=Noto+Sans+Khmer&family=Noto+Sans+Myanmar&family=Noto+Serif+Tibetan&family=Noto+Sans+Ethiopic&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Adlam&family=Noto+Sans+Bamum&family=Noto+Sans+Vai&family=Noto+Sans+NKo&family=Noto+Sans+Tifinagh&family=Noto+Sans+Osage&family=Noto+Sans+Cherokee&family=Noto+Sans+Canadian+Aboriginal&family=Noto+Sans+Yi&family=Noto+Sans+Mongolian&family=Noto+Sans+Syriac&family=Noto+Sans+Thaana&family=Noto+Sans+Mandaic&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Balinese&family=Noto+Sans+Batak&family=Noto+Sans+Buginese&family=Noto+Sans+Buhid&family=Noto+Sans+Hanunoo&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans+Javanese&family=Noto+Sans+Sundanese&family=Noto+Sans+Rejang&family=Noto+Sans+Cham&family=Noto+Sans+Tai+Le&family=Noto+Sans+Tai+Tham&family=Noto+Sans+Tai+Viet&family=Noto+Sans+New+Tai+Lue&family=Noto+Sans+Kayah+Li&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Chakma&family=Noto+Sans+Grantha&family=Noto+Sans+Hanifi+Rohingya&family=Noto+Sans+Lepcha&family=Noto+Sans+Limbu&family=Noto+Sans+Lisu&family=Noto+Sans+Meetei+Mayek&family=Noto+Sans+Miao&family=Noto+Sans+Newa&family=Noto+Sans+Ol+Chiki&family=Noto+Sans+Saurashtra&family=Noto+Sans+Sora+Sompeng&family=Noto+Sans+Syloti+Nagri&family=Noto+Sans+Wancho&family=Noto+Sans+Warang+Citi&family=Noto+Serif+NP+Hmong&display=swap">
+<!-- Garay, Gurung Khema, Kirat Rai, Ol Onal et Tulu-Tigalari (Unicode 16) : polices hébergées, voir style.css. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sunuwar&family=Noto+Sans+SC&family=Noto+Sans+JP&family=Noto+Sans+KR&display=swap">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<header>
+  <h1>Bibliothèque de Babel</h1>
+  <p class="sous-titre">22 984 symboles des langues vivantes · 410 pages de 40 lignes de 80 symboles · chaque livre existe une seule fois</p>
+</header>
+
+<main>
+  <section class="outils">
+    <button id="hasard" type="button" class="principal">Livre au hasard</button>
+    <details id="panneau-recherche">
+      <summary>Chercher un texte</summary>
+      <form id="recherche">
+        <label for="texte">Texte (lettres, ponctuation et espaces ; pas de chiffres)</label>
+        <textarea id="texte" rows="4" spellcheck="false" placeholder="Il y a une bibliothèque…"></textarea>
+        <p id="inconnus" class="erreur" hidden></p>
+        <div class="champs">
+          <label>Page <input id="r-page" type="number" min="1" max="410" value="1"></label>
+          <label>Ligne <input id="r-ligne" type="number" min="1" max="40" value="1"></label>
+          <label>Colonne <input id="r-colonne" type="number" min="1" max="80" value="1"></label>
+        </div>
+        <fieldset class="champs">
+          <legend>Autour du texte</legend>
+          <label><input type="radio" name="remplissage" value="espaces" checked> des espaces</label>
+          <label><input type="radio" name="remplissage" value="hasard"> du hasard</label>
+        </fieldset>
+        <button type="submit" class="principal">Chercher</button>
+      </form>
+    </details>
+  </section>
+
+  <section id="livre" aria-live="polite">
+    <p id="emplacement" class="emplacement">…</p>
+    <nav id="rayons" class="barre" aria-label="Livres voisins">
+      <button type="button" data-d="-640">‹ Hexagone</button>
+      <button type="button" data-d="-160">‹ Mur</button>
+      <button type="button" data-d="-32">‹ Étagère</button>
+      <button type="button" data-d="-1">‹ Volume</button>
+      <button type="button" data-d="1">Volume ›</button>
+      <button type="button" data-d="32">Étagère ›</button>
+      <button type="button" data-d="160">Mur ›</button>
+      <button type="button" data-d="640">Hexagone ›</button>
+    </nav>
+    <div id="message" class="message"></div>
+    <div id="page" class="page texte" dir="ltr"></div>
+    <nav class="barre" aria-label="Pages">
+      <button type="button" id="p-premiere" title="Première page">«</button>
+      <button type="button" id="p-precedente" title="Page précédente (←)">‹</button>
+      <label>Page <input id="numero" type="number" min="1" max="410" value="1"> / 410</label>
+      <button type="button" id="p-suivante" title="Page suivante (→)">›</button>
+      <button type="button" id="p-derniere" title="Dernière page">»</button>
+    </nav>
+    <div class="barre actions">
+      <span class="bascule" role="radiogroup" aria-label="Affichage">
+        <label><input type="radio" name="mode" value="texte"> Texte</label>
+        <label><input type="radio" name="mode" value="grille"> Grille</label>
+      </span>
+      <button type="button" id="copier-lien">Copier le lien</button>
+      <button type="button" id="copier-page">Copier la page</button>
+      <button type="button" id="dl-livre">Télécharger le livre</button>
+      <button type="button" id="dl-adresse">Télécharger l'adresse</button>
+      <label class="fichier">Ouvrir une adresse<input id="ouvrir" type="file" accept=".babel"></label>
+    </div>
+  </section>
+
+  <details class="apropos">
+    <summary>Comment ça marche</summary>
+    <p>Comme chez Borges, chaque livre a 410 pages de 40 lignes de 80 symboles. L'alphabet réunit 22 984 symboles :
+      lettres des langues vivantes, signes combinants, ponctuation et l'espace ; ni chiffres ni emojis.
+      La bibliothèque contient donc 2,5 × 10<sup>5 722 190</sup> livres, chacun exactement une fois.</p>
+    <p>L'adresse d'un livre est un nombre de 5,7 millions de chiffres : elle ne peut pas être plus courte que le livre
+      lui-même. Le lien de cette page ne contient donc pas l'adresse mais le chemin qui y mène : une graine de hasard,
+      ou le texte cherché et sa position, puis le décalage vers les livres voisins. L'adresse complète se télécharge
+      (2,5 Mo) et se rouvre avec « Ouvrir une adresse ».</p>
+    <p>Chaque hexagone range 640 livres : 4 murs de 5 étagères de 32 volumes. L'empreinte affichée résume le numéro de
+      l'hexagone. Livre et adresse sont reliés par une permutation réversible (réseau de Feistel, SHAKE-256) : deux
+      volumes voisins n'ont rien en commun.</p>
+    <p>Les symboles comptent au point de code près : « é » et « e » suivi de l'accent combinant se ressemblent mais
+      mènent à deux livres différents. Affichage « Grille » : un symbole par case, les signes combinants posés sur ◌.</p>
+    <p class="empreinte">Alphabet v2 : SHA-256 <code>fc1ba0f125dc08ceb64b39629e3489a05ffb9c25091093dd2882b7e7cfaae619</code></p>
+  </details>
+  <noscript><p class="erreur">Cette bibliothèque a besoin de JavaScript.</p></noscript>
+</main>
+</body>
+</html>
