@@ -122,6 +122,6 @@ les autres systèmes n'ont pas été vérifiés.
 
 ## Publier
 
-Le dossier `site/` suffit. Sur Netlify, déposer le dossier `site/` dans l'interface (« Deploy manually »). Sur
-GitHub Pages, publier `site/` avec une action `actions/upload-pages-artifact` (le mode « depuis une branche »
-n'accepte que la racine ou `docs/`). Les polices viennent de Google Fonts et de `site/polices/`.
+Le site est publié sur <https://breizhimic.github.io/bibliotheque-de-babel/>. À chaque envoi sur `main`,
+l'action `.github/workflows/pages.yml` lance les tests Node et Python, puis publie le dossier `site/` s'ils
+passent. Le dossier `site/` suffit aussi pour tout autre hébergeur statique (Netlify : « Deploy manually »).

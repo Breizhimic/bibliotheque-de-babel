@@ -1,0 +1,46 @@
+# Publie site/ sur GitHub Pages, seulement si les tests passent : les vecteurs de référence
+# garantissent qu'aucun changement de code ne déplace les livres déjà partagés.
+name: Publier le site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  tester:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24  # Unicode 17 : nécessaire au test « aucun caractère non assigné »
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - run: node --test
+      - run: python -m unittest discover -s tests
+
+  publier:
+    needs: tester
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+      - id: deploiement
+        uses: actions/deploy-pages@v5
